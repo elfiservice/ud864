@@ -16,25 +16,35 @@ API Course, Lesson 1 -->
      // Function to initialize the map within the map div
      function initMap() {
        map = new google.maps.Map(document.getElementById('map'), {
-         center: {lat: 40.74135, lng: -73.99802},
-         zoom: 14
+         center: {lat: -3.651149, lng: -38.726345},
+         zoom: 13
        });
        // Create a single latLng literal object.
-       var singleLatLng = {lat: 40.74135, lng: -73.99802};
+         var cumbuco = {lat: -3.619647, lng: -38.749908};
        // TODO: Create a single marker appearing on initialize -
        // Create it with the position of the singleLatLng,
        // on the map, and give it your own title!
-
+       var marker = new google.maps.Marker({
+          position: cumbuco,
+          title: 'Praia do Cumbuco',
+          map: map
+       });
        // TODO: create a single infowindow, with your own content.
        // It must appear on the marker
+       var infowindow = new google.maps.InfoWindow({
+         content: '<div>' + marker.title + '</div>'
+       });
 
        // TODO: create an EVENT LISTENER so that the infowindow opens when
        // the marker is clicked!
+       marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
      }
    </script>
    <!--TODO: Insert your API Key in the below call to load the API.-->
    <script async defer
-     src="https://maps.googleapis.com/maps/api/js?v=3&key=XXX&callback=initMap">
+     src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyCOFng3S8wkDSaA9PvWjQcY2dFcdN2ATzE&callback=initMap">
    </script>
  </body>
 </html>
